@@ -15,4 +15,5 @@ DateNav
 ---
 
 ## 📂 프로젝트 구조
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1cfff3e-1505-4b27-8aa9-80301deb8323/38a4c137-f84f-4df6-83e4-984cdd56c2f1/image.png)
+![image](https://github.com/user-attachments/assets/b6c7866c-7de8-40ce-95e4-85980668a812)
+

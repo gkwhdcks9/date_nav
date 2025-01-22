@@ -15,7 +15,8 @@ DateNav
 ---
 
 ## 📂 프로젝트 구조도
-![image](https://github.com/user-attachments/assets/be7d175a-7b2f-4a15-8532-705b9c52805d)
+![image](https://github.com/user-attachments/assets/9b6ba312-3497-466a-a3c5-bbe025e59bac)
+
 
 ---
 ## 필요한 함수

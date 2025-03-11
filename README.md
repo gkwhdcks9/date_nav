@@ -102,7 +102,7 @@ DateNav
 ---
 
 ## 🗄 데이터베이스 구조 (Firestore)
-plaintext
+```plaintext
 📁 users
   ├─ user_id: string
   ├─ nickname: string
@@ -124,7 +124,7 @@ plaintext
   ├─ message: string
   ├─ status: "pending" | "approved" | "rejected"
   └─ sentAt: Timestamp
-
+```
 ---
 
 ## 📂 프로젝트 구조도

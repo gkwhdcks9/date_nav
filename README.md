@@ -66,7 +66,7 @@ DateNav
 | **프레임워크**  | React.js (SPA + PWA)                                                 |
 | **상태 관리**   | Redux Toolkit                                                        |
 | **UI 라이브러리**| Material-UI                                                          |
-| **지도 통합**   | Google Maps JavaScript API                                           |
+| **지도 통합**   | Google Maps JavaScript API(HTML5 Geolocation API) ex. https://blog.naver.com/eztcpcom/220645390150 |
 
 ### **백엔드**
 | 분야           | 기술                                                                 |

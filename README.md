@@ -124,9 +124,36 @@ DateNav
 ```
 ---
 
-## 📂 프로젝트 구조도
-![image](https://github.com/user-attachments/assets/9b6ba312-3497-466a-a3c5-bbe025e59bac)
+## 📂 씬
 
+### 메인 화면
+![image](https://github.com/user-attachments/assets/34e05987-7d5d-44ee-a1b0-ba5f733a3899)
+
+### 로그인 화면
+![image](https://github.com/user-attachments/assets/840a1541-5957-4c12-b21f-9fe9bcc4a4bd)
+
+### 회원가입 화면
+![image](https://github.com/user-attachments/assets/ea99d0d8-2e47-4613-81c5-6b7cd2d34f45)
+
+* 로그인, 회원가입, 이메일 인증 시 localhost:3000 사용
+
+### 인근약속 화면
+![image](https://github.com/user-attachments/assets/92f44591-d409-4dd8-8fab-bbbe6fa63db7)
+
+### 인근약속 화면(게시물 상세열람)
+![image](https://github.com/user-attachments/assets/a33784e1-5d70-46c4-827e-721c0754552f)
+
+* 카테고리로 필터링 기능 구현
+
+### 너만 오면 고!!! 화면
+![image](https://github.com/user-attachments/assets/e042de9a-4739-4050-a0b8-b26d8aa7337f)
+
+* 인근약속에 (maxPeople - currentPeople = 1)
+
+### 약속 만들기 화면
+![image](https://github.com/user-attachments/assets/5b667098-247a-4c4d-86af-8629823ffd31)
+
+* 현재위치 업데이트
 ---
 ## 필요한 함수
 - **원하는 위치 저장하는 기능** : 구조도에서 본인 위치와 상대방 위치를 저장

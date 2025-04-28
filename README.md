@@ -104,26 +104,23 @@ DateNav
 ## 🗄 데이터베이스 구조 (Firestore)
 ```plaintext
 📁 users
-  ├─ user_id: string
-  ├─ nickname: string
-  ├─ interests: string[]
-  └─ location: GeoPoint
-
-📁 posts
-  ├─ post_id: string
-  ├─ title: string
-  ├─ theme: string
-  ├─ maxPeople: number
-  ├─ currentPeople: number
-  ├─ location: GeoPoint
+  ├─ email: string
+  ├─ name: string
+  ├─ password: string
+  ├─ school: string
+  ├─ schoolEmail: string
   └─ createdAt: Timestamp
 
-📁 requests
-  ├─ request_id: string
-  ├─ post_id: string (참조)
-  ├─ message: string
-  ├─ status: "pending" | "approved" | "rejected"
-  └─ sentAt: Timestamp
+📁 appointments
+  ├─ title: string
+  ├─ category: string
+  ├─ maxPeople: number
+  ├─ currentPeople: number
+  ├─ lat: number
+  ├─ lng: number
+  ├─ place: string
+  └─ createdAt: Timestamp
+
 ```
 ---
 

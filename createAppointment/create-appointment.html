@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>DATENAV - 약속 만들기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dqf8naqgxp&submodules=geocoder"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <button id="back-btn" class="nav-button">뒤로가기</button>
+      <h1 class="nav-title">약속 만들기</h1>
+      <button id="menu-btn" class="nav-button">메뉴</button>
+    </nav>
+  </header>
+
+  <div class="content-section">
+    <h2 class="section-title">현재 위치: <span id="location">위치 확인 중...</span></h2>
+
+    <!-- 약속 생성 폼 -->
+    <form id="appointment-form">
+      <label for="title">제목</label>
+      <input type="text" id="title" required />
+
+      <label for="maxPeople">최대 인원</label>
+      <input type="number" id="maxPeople" min="2" required />
+
+      <input type="hidden" id="lat" />
+      <input type="hidden" id="lng" />
+
+      <div style="margin: 16px 0; text-align: center;">
+        <!-- 검색 방식 선택 -->
+        <button id="choose-place" class="nav-button" type="button" style="background-color: #fff; color: #007aff; border: 1px solid #007aff; margin-right: 5px;">장소명으로 검색</button>
+        <button id="choose-address" class="nav-button" type="button" style="background-color: #fff; color: #007aff; border: 1px solid #007aff;">주소명으로 검색</button>
+      </div>
+
+      <!-- 장소명 검색 영역 -->
+      <div id="place-search-container" style="display: none;">
+        <input type="text" id="place" placeholder="장소명을 입력하세요" />
+        <button id="search-place-btn" class="nav-button" type="button" style="background-color: #007aff; color: white; margin-top: 10px;">검색</button>
+      </div>
+
+      <!-- 주소명 검색 영역 -->
+      <div id="address-search-container" style="display: none;">
+        <input type="text" id="address" placeholder="주소를 입력하세요" />
+        <button id="search-address-btn" class="nav-button" type="button" style="background-color: #007aff; color: white; margin-top: 10px;">검색</button>
+      </div>
+
+      <!-- 검색 결과 리스트 -->
+      <ul id="search-results" class="appointment-list"></ul>
+
+      <!-- 페이지네이션 -->
+      <div id="pagination" style="text-align: center; margin-top: 10px;"></div>
+
+      <!-- 카테고리 선택 -->
+      <label for="category">카테고리</label>
+      <select id="category" class="category-select">
+        <option value="all">전체 카테고리</option>
+        <option value="restaurant">음식점</option>
+        <option value="cafe">카페</option>
+        <option value="activity">액티비티</option>
+      </select>
+      <label for="appointmentTime">약속 시간:</label>
+      <input type="datetime-local" id="appointmentTime" name="appointmentTime" required />
+
+
+      <!-- 지도 -->
+      <div id="map"></div>
+
+      <div style="text-align: center; margin-top: 16px;">
+        <button type="submit" style="padding: 10px 20px; font-size: 16px; border-radius: 8px; border: none; background-color: #007aff; color: white; cursor: pointer;">
+          저장하기
+        </button>
+      </div>
+      
+    </form>
+  </div>
+  <script>
+      document.getElementById("back-btn").addEventListener("click", () => {
+          window.history.back();
+      });
+  </script>
+
+  <script type="module" src="create-appointment.js"></script>
+</body>
+</html>

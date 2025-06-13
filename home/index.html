@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATENAV - 새로운 약속</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <img src="icon_image/DATENAV_ICON.png" alt="아이콘" style="width: 40px; height: 50px;" />
+                <div class="logo">DATENAV</div>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="nav-links" id="menu-list">
+                    <a href="#home">홈</a>
+                    <a href="#lastone">너만 오면 고!!!</a>
+                    <a href="#nearprom">인근 약속</a>
+                    <a href="#my-activity">내 활동</a> <!-- ✅ 추가됨 -->
+                    <a href="#contact">문의</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>즉석 약속, 색다른 약속을 지금 해보세요!</h2>
+        <div class="cta-buttons">
+            <a href = "../register/register.html">
+                <button class="btn btn-primary">회원가입</button>
+            </a>
+            <a href="../login/login.html">
+                <button class="btn btn-secondary">로그인</button>
+            </a>
+        </div>
+
+        <div class="user-info" id="user-info" style="display: none;">
+            <span id="user-name"></span>님, 환영합니다!
+            
+            <button id="logout-btn">로그아웃</button>
+            <button id="inbox-btn" class="btn btn-secondary" style="margin-left: 0.5rem;">쪽지함</button>
+        </div>
+    </section>
+
+    <section class="match-section" id="lastone">
+        <div class="button-container" style="position: relative; text-align: center;">
+            <h2 class="section-title" style="margin: 0;">너만 오면 고!!!</h2>
+            <a href="../lastone/lastone.html" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); text-decoration: none;">
+                <button class="more-btn">더 보기..</button>
+            </a>
+        </div>
+        <div class="card-container" id="lastone-cards"></div>
+    </section>
+
+    <section class="match-section" id="nearprom">
+        <div class="button-container" style="position: relative; text-align: center;">
+            <h2 class="section-title" style="margin: 0;">인근 약속</h2>
+            <a href="../board/board.html" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); text-decoration: none;">
+                <button class="more-btn">더 보기..</button>
+            </a>
+        </div>
+        <div class="review-card" id="nearprom-cards"></div>
+    </section>
+
+    <section id="my-activity" class="activity-section">
+        <div class="button-container" style="position: relative; text-align: center;">
+            <h2 class="section-title" style="margin: 0;">내 활동</h2>
+            <a href="../myactivity/myactivity.html"
+            style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); text-decoration: none;">
+            <button class="more-btn">더 보기..</button>
+            </a>
+        </div>
+        <div id="activity-list" style="padding: 1rem; max-width: 800px; margin: auto;">
+            <p>📌 내가 참여했거나 생성한 약속 목록이 여기에 표시됩니다.</p>
+        </div>
+    </section>
+
+
+
+
+    <footer id="contact">
+        <p>© 2025 DATENAV. 모든 권리 보유.</p>
+        <p style="margin-top: 1rem;">문의: gkwhdcks9@naver.com | Tel: 02-1234-5678</p>
+        <div style="margin-top: 2rem;">
+            <small>경북 구미시 대학로 17-8</small>
+        </div>
+    </footer>
+    <div id="inbox-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div style="background:white; padding:2rem; border-radius:15px; width:90%; max-width:500px; max-height:80%; overflow-y:auto;">
+          <h3 style="margin-bottom: 1rem;">받은 쪽지함</h3>
+          <div id="inbox-list" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+          <div style="margin-top: 1.5rem; text-align: right;">
+            <button class="btn btn-secondary" id="close-inbox">닫기</button>
+          </div>
+        </div>
+    </div>
+    <div id="reply-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div style="background:white; padding:2rem; border-radius:15px; width:90%; max-width:500px;">
+          <h3>쪽지 답장</h3>
+          <textarea id="reply-text" rows="5" style="width:100%; padding:10px;"></textarea>
+          <div style="margin-top:1rem; text-align:right;">
+            <button class="btn btn-secondary" id="cancel-reply">취소</button>
+            <button class="btn btn-primary" id="send-reply">전송</button>
+          </div>
+        </div>
+    </div>
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

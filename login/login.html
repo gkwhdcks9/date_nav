@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DATENAV - 로그인</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <nav>
+        <div class="logo-container">
+          <img src="icon_image/DATENAV_ICON.png" alt="로고" style="width:40px;height:50px;">
+          <div class="logo">DATENAV</div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <h2 class="section-title">로그인</h2>
+    <form class="auth-form" id="loginForm">
+      <!-- 이메일 -->
+      <div class="form-group">
+        <label class="form-label" for="email">이메일</label>
+        <input type="email" class="form-input" id="email" required>
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="form-group">
+        <label class="form-label" for="password">비밀번호</label>
+        <input type="password" class="form-input" id="password" required>
+      </div>
+
+      <!-- 로그인 버튼 -->
+      <button type="submit" class="btn btn-primary" id="loginBtn">로그인</button>
+
+      <!-- 오류 메시지 -->
+      <div class="error-message" id="errorMsg"></div>
+    </form>
+
+    <p style="text-align:center; margin-top: 20px;">
+      계정이 없으신가요? <a href="register.html">회원가입</a>
+    </p>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>

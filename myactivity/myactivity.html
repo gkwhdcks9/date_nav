@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 활동 - DATENAV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="myactivity.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <button id="back-btn" class="nav-button">뒤로가기</button>
+      <h1 class="nav-title">내 활동</h1>
+      <button id="menu-btn" class="nav-button">메뉴</button>
+    </nav>
+  </header>
+
+  <div class="content-section">
+    <h2 class="section-title">👤 내 정보</h2>
+    <div id="user-info" style="border: 1px solid #ddd; padding: 1rem; border-radius: 10px; margin-bottom: 2rem;"></div>
+
+    <h2 class="section-title">📂 참석한 약속</h2>
+    <div id="past-appointments"></div>
+  </div>
+
+  <!-- 후기 모달 -->
+  <div id="review-modal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;">
+    <div id="review-content" style="background:white; padding:20px; border-radius:10px; width:90%; max-width:500px; max-height:80%; overflow-y:auto; position:relative;">
+      <span id="review-close" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+      <!-- JS로 내용 주입 -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("back-btn").addEventListener("click", () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

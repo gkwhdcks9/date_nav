@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATENAV - 새로운 약속</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .bar {
+            width: 30px;
+            height: 3px;
+            background: black;
+            margin: 3px 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 모바일 메뉴 스타일 */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 10px;
+                background: white;
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                transform: translateY(-20px);
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            }
+            .nav-links.active {
+                max-height: 300px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <img src="home_image/DATENAV_ICON.png" alt="아이콘" style="width: 90px; height: 50px;" />
+                <div class="logo">DATENAV</div>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="nav-links" id="menu-list">
+                    <a href="#home">홈</a>
+                    <a href="#lastone">너만 오면 고!!!</a>
+                    <a href="#nearprom">인근 약속</a>
+                    <a href="#contact">문의</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <h2>즉석 약속, 색다른 약속을 지금 해보세요!</h2>
+        <div class="cta-buttons">
+            <button class="btn btn-primary">회원가입</button>
+            <button class="btn btn-secondary">로그인</button>
+        </div>
+    </section>
+    
+    <section class="match-section" id="lastone">
+        <h2 class="section-title">너만 오면 고!!!</h2>
+        <div class="card-container">
+            <div class="match-card">
+                <h3>🔥 즉석 약속 리스트1</h3>
+                <p>보드게임</p>
+                <p>날짜 위치 정보, 1명 남은 약속</p>
+            </div>
+            <div class="match-card">
+                <h3>🔥 즉석 약속 리스트2</h3>
+                <p>방탈출카페</p>
+                <p>날짜 위치 정보, 1명 남은 약속</p>
+            </div>
+            <div class="match-card">
+                <h3>🔥 즉석 약속 리스트3</h3>
+                <p>술</p>
+                <p>날짜 위치 정보, 1명 남은 약속</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="reviews" id="nearprom">
+        <h2 class="section-title">인근 약속</h2>
+        <div class="review-card">
+            <p>"대구 수성구"</p>
+            <p class="review-author">- 사용자 A</p>
+        </div>
+        <div class="review-card">
+            <p>"대구 중구"</p>
+            <p class="review-author">- 사용자 B</p>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <p>© 2025 DATENAV. 모든 권리 보유.</p>
+        <p style="margin-top: 1rem;">문의: gkwhdcks9@naver.com | Tel: 02-1234-5678</p>
+        <div style="margin-top: 2rem;">
+            <small>경북 구미시 대학로 17-8</small>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-toggle');
+        const menuList = document.getElementById('menu-list');
+
+        menuBtn.addEventListener('click', function() {
+            menuList.classList.toggle('active');
+            menuBtn.classList.toggle('active'); // 햄버거 버튼 애니메이션 추가
+        });
+    </script>
+</body>
+</html>

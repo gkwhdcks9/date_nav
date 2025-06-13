@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>DATENAV - 새로운 약속</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        
+            <nav>
+                <button id="back-btn" class="nav-button">뒤로가기</button>
+                <button id="menu-btn" class="nav-button">메뉴</button>
+            </nav>
+        
+    </header>
+
+    <div class="content-section">
+        <h2 class="section-title">현재 위치: <span id="location">위치 확인 중...</span></h2>
+        
+        <select id="category" class="category-select">
+            <option value="all">전체 카테고리</option>
+            <option value="restaurant">음식점</option>
+            <option value="cafe">카페</option>
+            <option value="activity">액티비티</option>
+        </select>
+
+        <div id="map"></div>
+
+        <h3 class="section-title">즉석 약속 리스트</h3>
+        <ul class="appointment-list">
+            <li class="appointment-item">🔥 보드게임 약속 (3/4명)</li>
+            <li class="appointment-item">☕ 카페 목임 (2/3명)</li>
+            <li class="appointment-item">🍔 저녁 식사 목임 (1/4명)</li>
+        </ul>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script 
+    type="text/javascript"
+    src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dqf8naqgxp&submodules=geocoder">
+    </script>
+    <script>
+        let map;
+        let samplePlaces = [];
+        let categoryMarkers = [];
+
+        // 샘플 데이터 생성
+        function generateSamplePlaces(baseLat, baseLng) {
+            return [
+                // 음식점
+                { category: 'restaurant', name: '맛있는 식당', lat: baseLat + 0.001, lng: baseLng + 0.001 },
+                { category: 'restaurant', name: '고급 레스토랑', lat: baseLat - 0.001, lng: baseLng + 0.002 },
+                
+                // 카페
+                { category: 'cafe', name: '커피앤크림', lat: baseLat + 0.002, lng: baseLng - 0.001 },
+                { category: 'cafe', name: '디저트카페', lat: baseLat - 0.002, lng: baseLng - 0.002 },
+                
+                // 액티비티
+                { category: 'activity', name: '보드게임카페', lat: baseLat + 0.003, lng: baseLng },
+                { category: 'activity', name: '방탈출카페', lat: baseLat, lng: baseLng + 0.003 }
+            ];
+        }
+
+        // 카테고리 변경 핸들러
+        function handleCategoryChange() {
+            const selectedCategory = document.getElementById('category').value;
+            const filteredPlaces = selectedCategory === 'all' 
+                ? samplePlaces 
+                : samplePlaces.filter(place => place.category === selectedCategory);
+
+            // 기존 마커 제거
+            categoryMarkers.forEach(marker => marker.setMap(null));
+            categoryMarkers = [];
+
+            // 새 마커 추가
+            filteredPlaces.forEach(place => {
+                const marker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(place.lat, place.lng),
+                    map: map,
+                    title: place.name,
+                    icon: {
+                        content: `<div style="background:${getCategoryColor(place.category)}; 
+                                width:24px; height:24px; border-radius:50%; 
+                                text-align:center; line-height:24px;">${getCategoryIcon(place.category)}</div>`,
+                        size: new naver.maps.Size(24, 24),
+                        anchor: new naver.maps.Point(12, 12)
+                    }
+                });
+                categoryMarkers.push(marker);
+            });
+        }
+
+        // 카테고리 아이콘 설정
+        function getCategoryIcon(category) {
+            const icons = {
+                restaurant: '🍴',
+                cafe: '☕',
+                activity: '🎯'
+            };
+            return icons[category] || '📍';
+        }
+
+        // 카테고리 색상 설정
+        function getCategoryColor(category) {
+            const colors = {
+                restaurant: '#ff4757',
+                cafe: '#2ed573',
+                activity: '#3742fa'
+            };
+            return colors[category] || '#666';
+        }
+
+        // 지도 초기화
+        function initMap() {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+
+                    map = new naver.maps.Map('map', {
+                        center: new naver.maps.LatLng(lat, lng),
+                        zoom: 15
+                    });
+
+                    // 사용자 위치 마커
+                    new naver.maps.Marker({
+                        position: new naver.maps.LatLng(lat, lng),
+                        map: map,
+                        icon: {
+                            content: '<div style="background:#3498db; width:20px; height:20px; border-radius:50%; border:2px solid white"></div>',
+                            size: new naver.maps.Size(24, 24),
+                            anchor: new naver.maps.Point(12, 12)
+                        }
+                    });
+
+                    document.getElementById('location').textContent = 
+                        `위도: ${lat.toFixed(4)}, 경도: ${lng.toFixed(4)}`;
+
+                    // 샘플 데이터 생성 및 초기 표시
+                    samplePlaces = generateSamplePlaces(lat, lng);
+                    handleCategoryChange();
+                },
+                error => {
+                    // 위치 허용 안 할 경우 서울 좌표 사용
+                    const defaultPosition = { coords: { latitude: 37.5665, longitude: 126.9780 }};
+                    initMapWithPosition(defaultPosition);
+                    document.getElementById('location').textContent = '위치 정보 없음 (서울 시청 기준)';
+                }
+            );
+        }
+
+        document.getElementById('category').addEventListener('change', handleCategoryChange);
+        document.getElementById('back-btn').addEventListener('click', () => window.history.back());
+
+        window.onload = function() {
+            if (!window.naver) {
+                alert('지도 API 로드 실패');
+                return;
+            }
+            initMap();
+        };
+    </script>
+</body>
+</html>
+

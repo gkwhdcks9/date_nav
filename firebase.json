@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "date_nav",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

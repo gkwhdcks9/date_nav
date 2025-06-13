@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DATENAV - 회원가입</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <nav>
+        <div class="logo-container">
+          <img src="icon_image/DATENAV_ICON.png" alt="로고" style="width:40px;height:50px;">
+          <div class="logo">DATENAV</div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <h2 class="section-title">회원가입</h2>
+    <form class="auth-form" id="signupForm">
+      <!-- 이름 -->
+      <div class="form-group">
+        <label class="form-label" for="name">이름*</label>
+        <input type="text" class="form-input" id="name" required>
+      </div>
+
+      <!-- 개인 이메일 -->
+      <div class="form-group">
+        <label class="form-label" for="email">개인 이메일*</label>
+        <div class="input-row">
+          <input type="email" class="form-input" id="email" required>
+          <button type="button" class="verify-btn" id="verifyPersonalEmail">인증하기</button>
+        </div>
+        <span class="verification-badge" id="personalEmailVerified"></span>
+      </div>
+
+      <!-- 개인 인증번호 입력 -->
+      <div class="form-group" id="personalCodeGroup" style="display: none;">
+        <label class="form-label" for="personalCode">인증번호 입력</label>
+        <input type="text" class="form-input" id="personalCode">
+        <button type="button" class="verify-btn" id="checkPersonalCode">확인</button>
+      </div>
+
+      <!-- 학교 -->
+      <div class="form-group">
+        <label class="form-label" for="school">소속학교(선택)</label>
+        <input type="text" class="form-input" id="school" >
+      </div>
+
+      <!-- 학교 이메일 -->
+      <div class="form-group">
+        <label class="form-label" for="schoolEmail">학교 이메일(선택)</label>
+        <div class="input-row">
+          <input type="email" class="form-input" id="schoolEmail" >
+          <button type="button" class="verify-btn" id="verifySchoolEmail">인증하기</button>
+        </div>
+        <span class="verification-badge" id="schoolEmailVerified"></span>
+        <p class="domain-hint">예: 학번@학교도메인.ac.kr</p>
+      </div>
+
+      <!-- 학교 인증번호 입력 -->
+      <div class="form-group" id="schoolCodeGroup" style="display: none;">
+        <label class="form-label" for="schoolCode">인증번호 입력</label>
+        <input type="text" class="form-input" id="schoolCode">
+        <button type="button" class="verify-btn" id="checkSchoolCode">확인</button>
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="form-group">
+        <label class="form-label" for="password">비밀번호*</label>
+        <input type="password" class="form-input" id="password" required>
+        <p class="password-rules">8자 이상, 영문+숫자 조합</p>
+      </div>
+
+      <!-- 가입 -->
+      <button type="submit" class="btn btn-primary" id="submitBtn" disabled>가입 완료</button>
+      <div class="error-message" id="errorMsg"></div>
+    </form>
+  </div>
+
+  <script type="module" src="signupt.js"></script>
+
+</body>
+</html>

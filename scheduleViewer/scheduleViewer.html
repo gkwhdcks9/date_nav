@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATENAV - 공유된 시간표 보기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2 class="section-title">공유된 사용자 시간표</h2>
+
+    <div class="user-list" id="user-list">
+      <!-- 사용자 목록 출력 -->
+    </div>
+
+    <h3 style="margin-top: 2rem; color: #2d3436;">시간표 보기</h3>
+    <table id="schedule-table">
+      <thead>
+        <tr>
+          <th>시간/요일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 자동 생성 -->
+      </tbody>
+    </table>
+
+    <button class="btn btn-secondary" id="message-btn" style="display: none;">쪽지 보내기</button>
+  </div>
+<!-- 쪽지 모달 -->
+    <div id="message-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div style="background:white; padding:2rem; border-radius:15px; width:90%; max-width:400px;">
+        <h3>쪽지 보내기</h3>
+        <textarea id="message-text" rows="5" style="width:100%; padding:10px;"></textarea>
+        <div style="margin-top:1rem; text-align:right;">
+            <button class="btn btn-secondary" id="cancel-message">취소</button>
+            <button class="btn btn-primary" id="send-message">전송</button>
+        </div>
+        </div>
+    </div>
+  
+  <script type="module" src="scheduleViewer.js"></script>
+</body>
+</html>

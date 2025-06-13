@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>시간표 등록</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+  <header>
+    <h2>나의 대학교 시간표</h2>
+  </header>
+
+  <section>
+    <label for="major">전공 학과:</label>
+    <input type="text" id="major" placeholder="예: 경영학과" />
+  </section>
+
+  <label>
+    <input type="checkbox" id="share-checkbox" />
+    시간표를 다른 사용자와 공유합니다.
+  </label>
+
+  <table id="schedule-table">
+    <thead>
+      <tr>
+        <th>시간/요일</th>
+        <th>월</th>
+        <th>화</th>
+        <th>수</th>
+        <th>목</th>
+        <th>금</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JS에서 자동 생성 -->
+    </tbody>
+  </table>
+
+  <button id="save-btn">시간표 저장</button>
+
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const tbody = document.querySelector("#schedule-table tbody");
+      for (let hour = 9; hour <= 18; hour++) {
+        const row = document.createElement("tr");
+        const th = document.createElement("th");
+        th.textContent = `${hour}:00`;
+        row.appendChild(th);
+
+        for (let day = 0; day < 5; day++) {
+          const td = document.createElement("td");
+          td.contentEditable = "true";
+          td.setAttribute("data-hour", hour);
+          td.setAttribute("data-day", day);
+          row.appendChild(td);
+        }
+
+        tbody.appendChild(row);
+      }
+    });
+  </script>
+
+  <script type="module" src="schedule.js"></script>
+</body>
+</html>

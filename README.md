@@ -63,10 +63,8 @@ DateNav
 ### **프론트엔드**
 | 분야           | 기술                                                                 |
 |----------------|----------------------------------------------------------------------|
-| **프레임워크**  | React.js (SPA + PWA)                                                 |
-| **상태 관리**   | Redux Toolkit                                                        |
-| **UI 라이브러리**| Material-UI                                                          |
-| **지도 통합**   | Google Maps JavaScript API(HTML5 Geolocation API) https://blog.naver.com/eztcpcom/220645390150 |
+| **프레임워크**  | Node.js                                              |
+| **지도 통합**   | Kakao Maps API(HTML5 Geolocation API) https://blog.naver.com/eztcpcom/220645390150 |
 
 ### **백엔드**
 | 분야           | 기술                                                                 |
@@ -104,22 +102,46 @@ DateNav
 ## 🗄 데이터베이스 구조 (Firestore)
 ```plaintext
 📁 users
+  ├─ createdAt: string
   ├─ email: string
   ├─ name: string
   ├─ password: string
+  ├─ reliability: string
   ├─ school: string
-  ├─ schoolEmail: string
-  └─ createdAt: Timestamp
+  └─ schoolEmail: boolean
 
 📁 appointments
-  ├─ title: string
+  ├─ appointmentId: string
+  ├─ appointmentTime: Timestamp
   ├─ category: string
-  ├─ maxPeople: number
+  ├─ createdAt: Timestamp
   ├─ currentPeople: number
   ├─ lat: number
   ├─ lng: number
+  ├─ maxPeople: number
+  ├─ members: number
   ├─ place: string
-  └─ createdAt: Timestamp
+  ├─ reviewers: array
+  ├─ title: string
+  ├─ writerEmail: string
+  └─ writerName: string
+
+📁 messages
+  ├─ content: string
+  ├─ from: string
+  ├─ groupId: string
+  ├─ timestamp: Timestamp
+  ├─ title: string
+  └─ to: string
+  
+📁 schedules
+  ├─ email: string
+  ├─ major: string
+  ├─ schedule: array[][]
+  ├─ share: boolean
+  ├─ uid: string
+  └─ updatedAt: Timestamp
+
 
 ```
 ---
